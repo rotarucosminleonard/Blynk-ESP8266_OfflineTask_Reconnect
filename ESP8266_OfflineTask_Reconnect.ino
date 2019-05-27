@@ -1,10 +1,8 @@
 #define NAMEandVERSION "OfflineTask_Reconnect_V1.0"
 /*
-  Notes:
-  This sketch Based on Gunner example with some modifications to make it able to reconnect after Wifi failures or server failures.
-  It is able to check if it is a wifi or a server connection issue and recover it when it is possible
-  The MCU runs the task every second - It turns the builtin led on and off (allways) and post post the millis/1000 to blynk server (only when a connection is available) .
-  
+  This sketch is based on an example posted by Gunner with some modifications added in place to make it able to reconnect after Wifi or Server connection failures.
+  It is able to check if it is a Wifi or a server connection issue and recover it when it is possible
+  The MCU runs the task every second - It turns the builtin led on and off (allways) and post the millis/1000 to blynk server (only when a connection is available).
 */
 
 //#define BLYNK_DEBUG
