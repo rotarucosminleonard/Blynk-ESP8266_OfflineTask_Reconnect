@@ -37,7 +37,6 @@ void setup() {
   Serial.println();
   WiFi.hostname(NAMEandVERSION);
   WiFi.mode(WIFI_STA);
-  WiFi.config(arduino_ip, gateway_ip, subnet_mask);
   Blynk.config(auth, IPAddress(192,168,1,2), port);  // I am using the local Server
   CheckConnection();// It needs to run first to initiate the connection.Same function works for checking the connection!
   timer.setInterval(5000L, CheckConnection); 
@@ -60,6 +59,7 @@ void CheckConnection(){    // check every 11s if connected to Blynk server
     {
       Serial.println("Not connected to Wifi! Connect...");
       //Blynk.connectWiFi(ssid, pass); // used with Blynk.connect() in place of Blynk.begin(auth, ssid, pass, server, port);
+      WiFi.config(arduino_ip, gateway_ip, subnet_mask);
       WiFi.begin(ssid, pass);
       delay(400); //give it some time to connect
       if (WiFi.status() != WL_CONNECTED)
