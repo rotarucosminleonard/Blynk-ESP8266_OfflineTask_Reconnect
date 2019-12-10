@@ -11,24 +11,15 @@
 #define BLYNK_PRINT Serial    
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
+#include "config.h"
 
 BlynkTimer timer;
 
-char ssid[]            = "SSID";
-char pass[]            = "PASSWORD";
-char auth[]            = "AUTHKEY";
-//char server[]          = "blynk-cloud.com";
-//char server[]          = IPAddress(192,168,1,3);
-unsigned int port      = 1234; //use your own port of the server
 
 bool on = 0;
 bool online = 0;
 
-// If you dont want to use DHCP 
-IPAddress arduino_ip ( 192,  168,   1,  123);
-IPAddress dns_ip     ( 192,  168,   1,   1);
-IPAddress gateway_ip ( 192,  168,   1,   1);
-IPAddress subnet_mask(255, 255, 255,   0);
+
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);     // Initialize the LED_BUILTIN pin as an output
@@ -37,7 +28,7 @@ void setup() {
   Serial.println();
   WiFi.hostname(NAMEandVERSION);
   WiFi.mode(WIFI_STA);
-  Blynk.config(auth, IPAddress(192,168,1,2), port);  // I am using the local Server
+  Blynk.config(auth, serveraddr, port);  // I am using the local Server
   CheckConnection();// It needs to run first to initiate the connection.Same function works for checking the connection!
   timer.setInterval(5000L, CheckConnection); 
   timer.setInterval(1000L, myTimerEvent);          
